@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from userLogin import views
 
 urlpatterns = [
-	url(r'^usrLogin', include('userLogin.urls')),
+	url(r'^$', include('userLogin.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^formpage/', views.form_name_view, name = 'form_name')
 ]
