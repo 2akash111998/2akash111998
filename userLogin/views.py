@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from forms import FormName
 from userLogin.models import User
@@ -18,8 +19,12 @@ def form_name_view(request):
 	if form.is_valid():
 		obj = User()
 		obj.name = form.cleaned_data['name']
+		name = str(obj.name)
 		obj.email = form.cleaned_data['email']
 		obj.save()
-		return HttpResponseRedirect('/')
+		return HttpResponseRedirect(reverse('userLogin:thank_you',))
 			
 	return render(request, 'userLogin/form_name.html', {'form':form})
+
+def thank_you(request):
+	return render(request, 'userLogin/thanku.html',)
