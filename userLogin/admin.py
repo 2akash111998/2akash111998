@@ -2,6 +2,6 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
-from userLogin.models import User
+from userLogin.models import user_obj
 # Register your models here.
-admin.site.register(User)
+admin.site.register(user_obj)

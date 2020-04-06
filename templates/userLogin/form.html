@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'userLogin/index.html' %}
+
+{% block body_block %}
+<div class = 'container'>
+	<div class = 'jumbotron'>
+		{% if registered %}
+			<h2>Thank you for registering.</h2>
+		{% else %}
+			<h1>Register Here!</h1>
+			<h3>Fill the form</h3>
+			<form enctype="multipart/form-data" method = 'post'>
+				{% csrf_token %}
+				{{ user_form.as_p }}
+				{{ profile_form.as_p }}
+				<input type="submit" name="Register" value = 'Register'>
+			</form>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<title>Forms</title>
+</head>
+<body>
+	<dir class = 'container'>
+		<form method="POST">
+			{{ form.as_p }}	
+			{% csrf_token %}
+			<input type="submit" class = "btn btn-primary" value="Submit">
+		</form>
+		
+	</dir>
+<a href = "{% url 'userLogin:index' %}">Link for home page</a>
+</body>
+</html> -->
+

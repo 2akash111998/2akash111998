@@ -16,16 +16,26 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li><a href="{% url 'userLogin:index' %}">Home</a></li>
-	      <li><a href="{% url 'userLogin:index' %}">Index</a></li>
-	      <li><a href="{% url 'userLogin:form_name_view' %}">Registration</a></li>
+	      <li><a href="{% url 'userLogin:form' %}">Register</a></li>
 	      <li><a href="{% url 'admin:index' %}">Admin</a></li>
+
+	      {% if user.is_authenticated %}
+	      <li><a href="{% url 'userLogin:user_logout' %}">Logout</a></li>
+	      {% else %}
+
+	      <li ><a href="{% url 'userLogin:user_login' %}">Login</a></li>
+	      {% endif %}
+
+
 	    </ul>
 	  </div>
 	</nav>	
-	<h1>{{ insert_content }}</h1>
-	<br>
 	{% block body_block %}
-	<p><h2>We are on the index page where others are inheriting from</h2></p>
+	<div class = 'container'>
+		<div class="jumbotron">
+			<h2>This is our INDEX page.</h2>
+		</div>
+	</div>
 	{% endblock %}
 
 </body>
